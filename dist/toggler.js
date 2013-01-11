@@ -4,7 +4,7 @@
  * Copyright (c) 2013 Miloš Gavrilović; Licensed MIT
  */
 
-;(function($) {
+(function($) {
 
   $.toggler = function( element, options ) {
 
