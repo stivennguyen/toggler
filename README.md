@@ -11,7 +11,7 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
-<script src="libs/jquery/jquery.js"></script>
+<script src="libs/jquery.js"></script>
 <script src="dist/toggler.min.js"></script>
 <script>
 jQuery(function($) {

@@ -1,3 +1,9 @@
+/*
+ * Toggler - v0.0.1 - 2013-01-12
+ * https://github.com/Gavrisimo/toggler
+ * Copyright (c) 2013 Miloš Gavrilović; Licensed MIT
+ */
+
 ;(function($) {
 
   $.toggler = function( element, options ) {
