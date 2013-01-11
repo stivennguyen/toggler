@@ -1,0 +1,14 @@
+body {
+  padding-top: 100px;
+}
+
+.container {
+  width: 960px;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+  background: red;
+  margin-bottom: 20px;
+}

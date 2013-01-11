@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Toggle visibility of elements with ease!</title>
+
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Using elements ID</h1>
+
+    <button data-rel="hidden-content">Toggle visibility</button>
+
+    <div id="hidden-content" class="hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae cumque incidunt totam eveniet cum eligendi repudiandae doloremque voluptates voluptate deleniti ad praesentium harum nobis esse nihil aspernatur hic adipisci officia.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus vero eaque placeat non sequi totam nulla dolorem amet ut inventore cum alias porro animi harum. Nulla possimus optio voluptatum.</p>
+    </div>
+
+    <hr>
+
+    <button data-rel="another-hidden-content">Toggle visibility</button>
+
+    <div id="another-hidden-content" class="hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut mollitia deserunt perspiciatis autem ipsam minus distinctio aut rerum iste animi debitis quae expedita quibusdam numquam eaque sit eum officiis. Hic.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore excepturi maxime deleniti ratione facilis vero ex cumque cum. Tenetur obcaecati vitae magnam esse dolorum! Facilis distinctio porro ipsum doloribus ratione!</p>
+    </div>
+
+    <hr>
+
+    <h1>Using elements CLASS</h1>
+
+    <button data-rel="hidden-content-1">Toggle visibility</button>
+
+    <div id="hidden-content-1" class="toggle-me hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum laudantium deserunt omnis magni fuga cumque cum ut earum corporis debitis facilis incidunt dolorem minima id officiis velit quasi ipsam aliquid.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore modi porro veritatis dolores ducimus quod praesentium ipsam repellat dolorum veniam libero pariatur nulla necessitatibus accusamus laboriosam ipsum voluptates officiis itaque?</p>
+    </div>
+
+    <hr>
+
+    <button data-rel="another-hidden-content-1">Toggle visibility</button>
+
+    <div id="another-hidden-content-1" class="toggle-me hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum provident aliquid officia quisquam sit atque ea cumque animi exercitationem deleniti magnam nobis beatae impedit odio mollitia soluta voluptatibus architecto molestiae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione amet ducimus magni minima reprehenderit fugiat ipsa repellat placeat ipsam explicabo autem dolore vero tempora neque repudiandae velit asperiores quidem architecto.</p>
+    </div>
+  </div>
+
+  <script src="../libs/jquery/jquery.js"></script>
+  <script src="../src/simple-toggle.js"></script>
+
+  <script>
+    $(function() {
+      // Using elements ID
+      $('#hidden-content, #another-hidden-content').simpleToggle({
+        speed: 1000
+      });
+
+      // Using elements CLASS
+      $('.toggle-me').simpleToggle({
+        speed: 200
+      });
+    });
+  </script>
+</body>
+</html>

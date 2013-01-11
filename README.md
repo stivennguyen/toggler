@@ -28,3 +28,6 @@ _(Coming soon)_
 
 ## Release History
 _(Nothing yet)_
+
+## License
+Copyright (c) 2012 Miloš Gavrilović Licensed under the MIT license.

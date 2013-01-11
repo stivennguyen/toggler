@@ -6,23 +6,111 @@
  * Licensed under the MIT license.
  */
 
-(function($) {
+;(function($) {
 
-  // Collection method.
-  $.fn.awesome = function() {
+  $.simpleToggle = function( element, options ) {
+
+    // default options
+    var defaults = {
+      speed: 400
+    }
+
+    // use "plugin" to reference the
+    // current instance of the object
+    var plugin = this;
+
+    // this will hold the merged default
+    // and user-provided options
+    plugin.settings = {};
+
+    var element  = element,
+        $element = $(element),
+        $elementParent = $element.wrap('<div class="toggler" />').parent(),
+        dimensions = { toggler: [], togglerParent: [] },
+        $triggers = $('[data-rel=' + $element.attr('id') + ']');
+
+    // the "constructor"
+    var _init = function() {
+
+      // the plugin's final properties are the merged
+      // default and user-provided options (if any)
+      plugin.settings = $.extend({}, defaults, options);
+
+      // Cache dimensions
+      dimensions.toggler.push( $element.width(), $element.height() );
+      dimensions.togglerParent.push( $element.outerWidth(true), $element.outerHeight(true) );
+
+      $elementParent.css({
+        height: dimensions.togglerParent[1],
+        overflow: 'hidden',
+        display: $element.css('display')
+      });
+
+      $element.css({
+        display: 'block'
+      });
+
+      attachEvents();
+    }
+
+    // a private method
+    var attachEvents = function() {
+      $triggers.each(function() {
+        $(this).on({
+          click: function(e) {
+            e.preventDefault();
+
+            if ( ! $elementParent.is(':animated') ) {
+              if ( $elementParent.is(':visible') ) {
+                $elementParent.animate({
+                  height: "0px"
+                }, plugin.settings.speed, 'swing', function() {
+                  $elementParent.css({
+                    display: 'none'
+                  });
+                });
+              } else {
+                $elementParent.css({
+                  height: "0px",
+                  display: 'block'
+                });
+
+                $elementParent.animate({
+                  height: dimensions.togglerParent[1]
+                }, plugin.settings.speed, 'swing', function() {
+                  // Do something maybe?
+                });
+              }
+            }
+          }
+        });
+      });
+    };
+
+    // call the "constructor" method
+    _init();
+  }
+
+  // add the plugin to the jQuery.fn object
+  $.fn.simpleToggle = function(options) {
+
+    // iterate through the DOM elements we are attaching the plugin to
     return this.each(function() {
-      $(this).html('awesome');
+
+      // if plugin has not already been attached to the element
+      if ( undefined == $(this).data('simpleToggle') ) {
+        // create a new instance of the plugin
+        // pass the DOM element and the user-provided options as arguments
+        var plugin = new $.simpleToggle(this, options);
+
+        // in the jQuery version of the element
+        // store a reference to the plugin object
+        // you can later access the plugin and its methods and properties like
+        // element.data('simpleToggle').publicMethod(arg1, arg2, ... argn) or
+        // element.data('simpleToggle').settings.propertyName
+        $(this).data('simpleToggle', plugin);
+      }
     });
-  };
-
-  // Static method.
-  $.awesome = function() {
-    return 'awesome';
-  };
-
-  // Custom selector.
-  $.expr[':'].awesome = function(elem) {
-    return elem.textContent.indexOf('awesome') >= 0;
-  };
+  }
 
 }(jQuery));
