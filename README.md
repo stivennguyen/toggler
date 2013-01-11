@@ -5,17 +5,17 @@ Toggle visibility of elements with ease!
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/Gavrisimo/simple-toggle/master/dist/simple-toggle.min.js
-[max]: https://raw.github.com/Gavrisimo/simple-toggle/master/dist/simple-toggle.js
+[min]: https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.min.js
+[max]: https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.js
 
 In your web page:
 
 ```html
-<script src="jquery.js"></script>
-<script src="dist/simple-toggle.min.js"></script>
+<script src="libs/jquery/jquery.js"></script>
+<script src="dist/toggler.min.js"></script>
 <script>
 jQuery(function($) {
-  $.awesome(); // "awesome"
+  $.toggler();
 });
 </script>
 ```

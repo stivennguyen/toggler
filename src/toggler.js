@@ -1,6 +1,6 @@
 /*
- * simple-toggle
- * https://github.com/Gavrisimo/simple-toggle
+ * toggler
+ * https://github.com/Gavrisimo/toggler
  *
  * Copyright (c) 2013 Milos Gavrilovic
  * Licensed under the MIT license.
@@ -8,7 +8,7 @@
 
 ;(function($) {
 
-  $.simpleToggle = function( element, options ) {
+  $.toggler = function( element, options ) {
 
     // default options
     var defaults = {
@@ -92,23 +92,23 @@
   }
 
   // add the plugin to the jQuery.fn object
-  $.fn.simpleToggle = function(options) {
+  $.fn.toggler = function(options) {
 
     // iterate through the DOM elements we are attaching the plugin to
     return this.each(function() {
 
       // if plugin has not already been attached to the element
-      if ( undefined == $(this).data('simpleToggle') ) {
+      if ( undefined == $(this).data('toggler') ) {
         // create a new instance of the plugin
         // pass the DOM element and the user-provided options as arguments
-        var plugin = new $.simpleToggle(this, options);
+        var plugin = new $.toggler(this, options);
 
         // in the jQuery version of the element
         // store a reference to the plugin object
         // you can later access the plugin and its methods and properties like
-        // element.data('simpleToggle').publicMethod(arg1, arg2, ... argn) or
-        // element.data('simpleToggle').settings.propertyName
-        $(this).data('simpleToggle', plugin);
+        // element.data('toggler').publicMethod(arg1, arg2, ... argn) or
+        // element.data('toggler').settings.propertyName
+        $(this).data('toggler', plugin);
       }
     });
   }
