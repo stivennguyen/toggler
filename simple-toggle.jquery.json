@@ -1,0 +1,29 @@
+{
+  "name": "simple-toggle",
+  "title": "Simple Toggle",
+  "description": "Toggle visibility of elements with ease!",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Gavrisimo/simple-toggle",
+  "author": {
+    "name": "Milos Gavrilovic",
+    "email": "milos@gavrilovic.rs",
+    "url": "http://milos.gavrilovic.rs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Gavrisimo/simple-toggle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gavrisimo/simple-toggle/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Gavrisimo/simple-toggle/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
