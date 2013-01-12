@@ -2,6 +2,13 @@
 
 Toggle visibility of elements with ease!
 
+When you call `toggler()` method on element, plugin automatically selects all
+other elements that have `data-rel` same as the `id` attribute of element, on
+which you called `toggler()` method, and it attaches `click` event handler to it.
+
+Then you can click on any of those elements that now have `click` event attached
+to toggle visibility of element on which you called `toggler()` method.
+
 ## Roadmap
 1. Provide easy and reusable way to toggle visibility of elements
 2. Provide easy way to have *non* jerky versions of slideToggle() method
@@ -12,15 +19,23 @@ Download the [production version][min] or the [development version][max].
 [min]: https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.min.js
 [max]: https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.js
 
-In your web page:
+Include jQuery and plugin in your page then call `toggler()` method on element
+you wish to toggle:
 
 ```html
+<button data-rel="hidden-content">Toggle visibility</button>
+<a data-rel="hidden-content" href="#">Toggle visibility</a>
+<div data-rel="hidden-content">Toggle visibility</div>
+
+<div id="hidden-content" style="display: none;">Hidden content</div>
+
 <script src="libs/jquery.js"></script>
 <script src="dist/toggler.min.js"></script>
+
 <script>
-jQuery(function($) {
-  $.toggler();
-});
+  jQuery(function($) {
+    $('#hidden-content').toggler();
+  });
 </script>
 ```
 
