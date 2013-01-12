@@ -1,6 +1,4 @@
-# Toggler
-
-Toggle visibility of elements with ease!
+# [Toggler](http://gavrisimo.github.com/toggler/) - toggle visibility of elements with ease!
 
 When you call `toggler()` method on element, plugin automatically selects all
 other elements that have `data-rel` same as the `id` attribute of element, on
