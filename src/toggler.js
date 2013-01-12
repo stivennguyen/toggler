@@ -11,14 +11,12 @@
     // current instance of the object
     var plugin = this;
 
-    // this will hold the merged default
-    // and user-provided options
-    plugin.settings = {};
-
-    var $element = $(element),
-        $elementParent = $element.wrap('<div class="toggler" />').parent(),
-        dimensions = { element: [], elementParent: [] },
-        $triggers = $('[data-rel=' + $element.attr('id') + ']');
+    // set some publicly available data
+    plugin.settings      = {};
+    plugin.element       = $(element),
+    plugin.elementParent = plugin.element.wrap('<div class="toggler" />').parent(),
+    plugin.dimensions    = { element: [], elementParent: [] },
+    plugin.triggers      = $('[data-rel=' + plugin.element.attr('id') + ']');
 
     // the "constructor"
     var _init = function() {
@@ -27,47 +25,49 @@
       // default and user-provided options (if any)
       plugin.settings = $.extend({}, defaults, options);
 
-      // Cache dimensions
-      dimensions.element.push( $element.width(), $element.height() );
-      dimensions.elementParent.push( $element.outerWidth(true), $element.outerHeight(true) );
+      // Cache dimensions just in case of a apocalypse?
+      plugin.dimensions.element.push( plugin.element.width(), plugin.element.height() );
+      plugin.dimensions.elementParent.push( plugin.element.outerWidth(true), plugin.element.outerHeight(true) );
 
-      $elementParent.css({
-        height: dimensions.elementParent[1],
+      // Set dimensions on element parent
+      // and get elements visibility
+      plugin.elementParent.css({
+        height: plugin.dimensions.elementParent[1],
         overflow: 'hidden',
-        display: $element.css('display')
+        display: plugin.element.css('display')
       });
 
-      $element.css({
-        display: 'block'
-      });
+      // elementParent now has original
+      // visibility so let's just show element
+      plugin.element.show();
 
       attachEvents();
     }
 
     // a private method
     var attachEvents = function() {
-      $triggers.each(function() {
+      plugin.triggers.each(function() {
         $(this).on({
           click: function(e) {
             e.preventDefault();
 
-            if ( ! $elementParent.is(':animated') ) {
-              if ( $elementParent.is(':visible') ) {
-                $elementParent.animate({
+            if ( ! plugin.elementParent.is(':animated') ) {
+              if ( plugin.elementParent.is(':visible') ) {
+                plugin.elementParent.animate({
                   height: "0px"
                 }, plugin.settings.speed, 'swing', function() {
-                  $elementParent.css({
+                  plugin.elementParent.css({
                     display: 'none'
                   });
                 });
               } else {
-                $elementParent.css({
+                plugin.elementParent.css({
                   height: "0px",
                   display: 'block'
                 });
 
-                $elementParent.animate({
-                  height: dimensions.elementParent[1]
+                plugin.elementParent.animate({
+                  height: plugin.dimensions.elementParent[1]
                 }, plugin.settings.speed, 'swing', function() {
                   // Do something maybe?
                 });
