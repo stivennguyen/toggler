@@ -10,21 +10,22 @@
 
     // default options
     var defaults = {
-      speed: 400
+      type:  'simple',
+      speed: 400,
+      noJerky: false,
+      debug: true
     }
 
     // use "plugin" to reference the
     // current instance of the object
     var plugin = this;
 
-    // this will hold the merged default
-    // and user-provided options
-    plugin.settings = {};
-
-    var $element = $(element),
-        $elementParent = $element.wrap('<div class="toggler" />').parent(),
-        dimensions = { element: [], elementParent: [] },
-        $triggers = $('[data-rel=' + $element.attr('id') + ']');
+    // set some publicly available data
+    plugin.settings      = {};
+    plugin.element       = $(element),
+    plugin.elementParent = plugin.element.wrap('<div class="toggler" />').parent(),
+    plugin.dimensions    = { element: [], elementParent: [] },
+    plugin.triggers      = $('[data-rel=' + plugin.element.attr('id') + ']');
 
     // the "constructor"
     var _init = function() {
@@ -33,47 +34,91 @@
       // default and user-provided options (if any)
       plugin.settings = $.extend({}, defaults, options);
 
-      // Cache dimensions
-      dimensions.element.push( $element.width(), $element.height() );
-      dimensions.elementParent.push( $element.outerWidth(true), $element.outerHeight(true) );
+      // First we need to setup our elementParent
+      setupElementParent();
 
-      $elementParent.css({
-        height: dimensions.elementParent[1],
-        overflow: 'hidden',
-        display: $element.css('display')
-      });
-
-      $element.css({
-        display: 'block'
-      });
-
-      attachEvents();
+      // Let's see what toggle type shall we use
+      if ( plugin.settings.type === 'simple' ) {
+        attachSimple();
+      } else if ( plugin.settings.type === 'smooth' ) {
+        attachSmooth();
+      } else if ( plugin.settings.type === 'fade' ) {
+        attachFade();
+      } else {
+        log( 'Unknown toggle type has been set; reverting back to "simple".' );
+        attachSimple();
+      }
     }
 
-    // a private method
-    var attachEvents = function() {
-      $triggers.each(function() {
+    var setupElementParent = function() {
+      // Cache dimensions just in case of a apocalypse?
+      plugin.dimensions.element.push( plugin.element.width(), plugin.element.height() );
+      plugin.dimensions.elementParent.push( plugin.element.outerWidth(true), plugin.element.outerHeight(true) );
+
+      // Get elements visibility and
+      // set it on elementParent
+      plugin.elementParent.css({
+        display: plugin.element.css('display')
+      });
+
+      // elementParent now has original
+      // visibility so let's just show element
+      plugin.element.show();
+
+      // We need additional preparation
+      // if toggle type is 'smooth'
+      if ( plugin.settings.type === 'smooth' ) {
+        plugin.elementParent.css({
+          height: plugin.dimensions.elementParent[1]
+        });
+
+        // And even more preparation if
+        // 'noJerky' setting is true
+        if ( plugin.settings.noJerky ) {
+          plugin.elementParent.css({
+            overflow: 'hidden'
+          });
+        }
+      }
+
+      log( 'Everything is ready.', plugin.settings );
+    };
+
+    var attachSimple = function() {
+      plugin.triggers.each(function() {
         $(this).on({
           click: function(e) {
             e.preventDefault();
 
-            if ( ! $elementParent.is(':animated') ) {
-              if ( $elementParent.is(':visible') ) {
-                $elementParent.animate({
+            plugin.elementParent.toggle();
+          }
+        });
+      });
+    };
+
+    var attachSmooth = function() {
+      plugin.triggers.each(function() {
+        $(this).on({
+          click: function(e) {
+            e.preventDefault();
+
+            if ( ! plugin.elementParent.is(':animated') ) {
+              if ( plugin.elementParent.is(':visible') ) {
+                plugin.elementParent.animate({
                   height: "0px"
                 }, plugin.settings.speed, 'swing', function() {
-                  $elementParent.css({
+                  plugin.elementParent.css({
                     display: 'none'
                   });
                 });
               } else {
-                $elementParent.css({
+                plugin.elementParent.css({
                   height: "0px",
                   display: 'block'
                 });
 
-                $elementParent.animate({
-                  height: dimensions.elementParent[1]
+                plugin.elementParent.animate({
+                  height: plugin.dimensions.elementParent[1]
                 }, plugin.settings.speed, 'swing', function() {
                   // Do something maybe?
                 });
@@ -83,6 +128,25 @@
         });
       });
     };
+
+    var attachFade = function() {
+      plugin.triggers.each(function() {
+        $(this).on({
+          click: function(e) {
+            e.preventDefault();
+
+            plugin.elementParent.fadeToggle( plugin.settings.speed );
+          }
+        });
+      });
+    };
+
+    var log = function( text, object ) {
+      if ( plugin.settings.debug ) {
+        console.group( 'DEBUG: ' + text, object );
+        console.groupEnd();
+      }
+    }
 
     // call the "constructor" method
     _init();
