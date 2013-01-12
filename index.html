@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Toggler by Gavrisimo</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Gavrisimo/toggler">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Toggler</h1>
+            <h2>Toggle visibility of elements with ease!</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/Gavrisimo/toggler/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/Gavrisimo/toggler/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a href="http://gavrisimo.github.com/toggler/">Toggler</a> - toggle visibility of elements with ease!</h1>
+
+<p><a href="https://travis-ci.org/Gavrisimo/toggler"><img src="https://travis-ci.org/Gavrisimo/toggler.png?branch=master" alt="Build Status"></a></p>
+
+<p>When you call <code>toggler()</code> method on element, plugin automatically selects all
+other elements that have <code>data-rel</code> same as the <code>id</code> attribute of element, on
+which you called <code>toggler()</code> method, and it attaches <code>click</code> event handler to it.</p>
+
+<p>Then you can click on any of those elements that now have <code>click</code> event attached
+to toggle visibility of element on which you called <code>toggler()</code> method.</p>
+
+<h2>Roadmap</h2>
+
+<ol>
+<li>Provide easy and reusable way to toggle visibility of elements</li>
+<li>Provide easy way to have <em>non</em> jerky versions of slideToggle() method</li>
+<li>Moar tests</li>
+</ol><h2>Getting Started</h2>
+
+<p>Download the <a href="https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.min.js">production version</a> or the <a href="https://raw.github.com/Gavrisimo/toggler/master/dist/toggler.js">development version</a>.</p>
+
+<p>Include jQuery and plugin in your page then call <code>toggler()</code> method on element
+you wish to toggle:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;button</span> <span class="na">data-rel=</span><span class="s">"hidden-content"</span><span class="nt">&gt;</span>Toggle visibility<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">data-rel=</span><span class="s">"hidden-content"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Toggle visibility<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-rel=</span><span class="s">"hidden-content"</span><span class="nt">&gt;</span>Toggle visibility<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hidden-content"</span> <span class="na">style=</span><span class="s">"display: none;"</span><span class="nt">&gt;</span>Hidden content<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/toggler.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">jQuery</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#hidden-content'</span><span class="p">).</span><span class="nx">toggler</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h2>Documentation</h2>
+
+<p><em>(Coming soon)</em></p>
+
+<h2>Examples</h2>
+
+<p><em>(Coming soon)</em></p>
+
+<h2>Release History</h2>
+
+<p><em>(Nothing yet)</em></p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 Miloš Gavrilović Licensed under the MIT license.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Gavrisimo">Gavrisimo</a> can be found on <a href="https://github.com/Gavrisimo/toggler">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-4046730-11");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
