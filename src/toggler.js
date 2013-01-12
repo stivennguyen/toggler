@@ -129,7 +129,9 @@
           click: function(e) {
             e.preventDefault();
 
-            plugin.elementParent.fadeToggle( plugin.settings.speed );
+            if ( ! plugin.elementParent.is(':animated') ) {
+              plugin.elementParent.fadeToggle( plugin.settings.speed );
+            }
           }
         });
       });
