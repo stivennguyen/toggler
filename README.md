@@ -12,6 +12,7 @@ to toggle visibility of element on which you called `toggler()` method.
 ## Roadmap
 1. Provide easy and reusable way to toggle visibility of elements
 2. Provide easy way to have *non* jerky versions of slideToggle() method
+3. Moar tests
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
