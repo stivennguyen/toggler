@@ -1,4 +1,4 @@
-;(function($) {
+(function($) {
 
   $.toggler = function( element, options ) {
 
