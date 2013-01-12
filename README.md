@@ -1,6 +1,10 @@
-# Simple Toggle
+# Toggler
 
 Toggle visibility of elements with ease!
+
+## Roadmap
+1. Provide easy and reusable way to toggle visibility of elements
+2. Provide easy way to have *non* jerky versions of slideToggle() method
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
