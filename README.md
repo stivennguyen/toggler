@@ -1,5 +1,7 @@
 # [Toggler](http://gavrisimo.github.com/toggler/) - toggle visibility of elements with ease!
 
+[![Build Status](https://travis-ci.org/Gavrisimo/toggler.png?branch=master)](https://travis-ci.org/Gavrisimo/toggler)
+
 When you call `toggler()` method on element, plugin automatically selects all
 other elements that have `data-rel` same as the `id` attribute of element, on
 which you called `toggler()` method, and it attaches `click` event handler to it.
