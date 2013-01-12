@@ -4,7 +4,8 @@
 
     // default options
     var defaults = {
-      speed: 400
+      type:  'simple',
+      debug: true
     }
 
     // use "plugin" to reference the
@@ -25,6 +26,21 @@
       // default and user-provided options (if any)
       plugin.settings = $.extend({}, defaults, options);
 
+      // First we need to setup our elementParent
+      setupElementParent();
+
+      // Let's see what toggle type shall we use
+      if ( plugin.settings.type === 'simple' ) {
+        attachSimple();
+      } else if ( plugin.settings.type === 'smooth' ) {
+        attachSmooth();
+      } else {
+        log( 'Unknown toggle type has been set; reverting back to "simple".' );
+        attachSimple();
+      }
+    }
+
+    var setupElementParent = function() {
       // Cache dimensions just in case of a apocalypse?
       plugin.dimensions.element.push( plugin.element.width(), plugin.element.height() );
       plugin.dimensions.elementParent.push( plugin.element.outerWidth(true), plugin.element.outerHeight(true) );
@@ -41,11 +57,22 @@
       // visibility so let's just show element
       plugin.element.show();
 
-      attachEvents();
-    }
+      log( 'Everything is ready.', plugin.settings );
+    };
 
-    // a private method
-    var attachEvents = function() {
+    var attachSimple = function() {
+      plugin.triggers.each(function() {
+        $(this).on({
+          click: function(e) {
+            e.preventDefault();
+
+            plugin.elementParent.toggle();
+          }
+        });
+      });
+    };
+
+    var attachSmooth = function() {
       plugin.triggers.each(function() {
         $(this).on({
           click: function(e) {
@@ -77,6 +104,13 @@
         });
       });
     };
+
+    var log = function( text, object ) {
+      if ( plugin.settings.debug ) {
+        console.group( 'DEBUG: ' + text, object );
+        console.groupEnd();
+      }
+    }
 
     // call the "constructor" method
     _init();
