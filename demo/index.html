@@ -14,37 +14,57 @@
 <body>
 
   <div class="container">
-    <h1>Using elements ID</h1>
+    <h2>type: simple;</h2>
 
-    <button data-rel="hidden-content">Toggle visibility</button>
+    <button data-rel="type-simple">Toggle visibility</button>
 
-    <div id="hidden-content" class="hidden">
+    <div id="type-simple" class="hidden">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae cumque incidunt totam eveniet cum eligendi repudiandae doloremque voluptates voluptate deleniti ad praesentium harum nobis esse nihil aspernatur hic adipisci officia.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus vero eaque placeat non sequi totam nulla dolorem amet ut inventore cum alias porro animi harum. Nulla possimus optio voluptatum.</p>
     </div>
 
     <hr>
 
-    <button data-rel="another-hidden-content">Toggle visibility</button>
+    <h2>type: smooth;</h2>
 
-    <div id="another-hidden-content" class="hidden">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut mollitia deserunt perspiciatis autem ipsam minus distinctio aut rerum iste animi debitis quae expedita quibusdam numquam eaque sit eum officiis. Hic.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore excepturi maxime deleniti ratione facilis vero ex cumque cum. Tenetur obcaecati vitae magnam esse dolorum! Facilis distinctio porro ipsum doloribus ratione!</p>
-    </div>
+    <button data-rel="type-smooth">Toggle visibility</button>
 
-    <hr>
-
-    <h1>Using elements CLASS</h1>
-
-    <button data-rel="hidden-content-1">Toggle visibility</button>
-
-    <div id="hidden-content-1" class="toggle-me hidden">
+    <div id="type-smooth" class="toggle-me hidden">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum laudantium deserunt omnis magni fuga cumque cum ut earum corporis debitis facilis incidunt dolorem minima id officiis velit quasi ipsam aliquid.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore modi porro veritatis dolores ducimus quod praesentium ipsam repellat dolorum veniam libero pariatur nulla necessitatibus accusamus laboriosam ipsum voluptates officiis itaque?</p>
     </div>
 
     <hr>
 
-    <button data-rel="another-hidden-content-1">Toggle visibility</button>
+    <h2>
+      type: smooth; speed: 1000; noJerky: false;<br />
+      <small>*Hidden element and elements inside have some margin/padding set initially for this demo.</small>
+    </h2>
 
-    <div id="another-hidden-content-1" class="toggle-me hidden">
+    <button data-rel="type-smooth-noJerkyFalse">Toggle visibility</button>
+
+    <div id="type-smooth-noJerkyFalse" class="toggle-me jerky-demo hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum provident aliquid officia quisquam sit atque ea cumque animi exercitationem deleniti magnam nobis beatae impedit odio mollitia soluta voluptatibus architecto molestiae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione amet ducimus magni minima reprehenderit fugiat ipsa repellat placeat ipsam explicabo autem dolore vero tempora neque repudiandae velit asperiores quidem architecto.</p>
+    </div>
+
+    <hr>
+
+    <h2>
+      type: smooth; speed: 1000; noJerky: true;<br />
+      <small>*Hidden element and elements inside have some margin/padding set initially for this demo.</small>
+    </h2>
+
+    <button data-rel="type-smooth-noJerkyTrue">Toggle visibility</button>
+
+    <div id="type-smooth-noJerkyTrue" class="toggle-me jerky-demo hidden">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum provident aliquid officia quisquam sit atque ea cumque animi exercitationem deleniti magnam nobis beatae impedit odio mollitia soluta voluptatibus architecto molestiae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione amet ducimus magni minima reprehenderit fugiat ipsa repellat placeat ipsam explicabo autem dolore vero tempora neque repudiandae velit asperiores quidem architecto.</p>
+    </div>
+
+    <hr>
+
+    <h2>type: fade; speed: 1000;</h2>
+
+    <button data-rel="type-fade">Toggle visibility</button>
+
+    <div id="type-fade" class="toggle-me hidden">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum provident aliquid officia quisquam sit atque ea cumque animi exercitationem deleniti magnam nobis beatae impedit odio mollitia soluta voluptatibus architecto molestiae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione amet ducimus magni minima reprehenderit fugiat ipsa repellat placeat ipsam explicabo autem dolore vero tempora neque repudiandae velit asperiores quidem architecto.</p>
     </div>
   </div>
@@ -54,14 +74,28 @@
 
   <script>
     $(function() {
-      // Using elements ID
-      $('#hidden-content, #another-hidden-content').toggler({
+      $('#type-simple').toggler({
         type: 'simple'
       });
 
-      // Using elements CLASS
-      $('.toggle-me').toggler({
+      $('#type-smooth').toggler({
+        type: 'smooth'
+      });
+
+      $('#type-smooth-noJerkyFalse').toggler({
         type: 'smooth',
+        speed: 1000,
+        noJerky: false
+      });
+
+      $('#type-smooth-noJerkyTrue').toggler({
+        type: 'smooth',
+        speed: 1000,
+        noJerky: true
+      });
+
+      $('#type-fade').toggler({
+        type: 'fade',
         speed: 1000
       });
     });

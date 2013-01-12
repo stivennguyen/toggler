@@ -1,5 +1,11 @@
 body {
   padding-top: 100px;
+  color: #000;
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .container {
@@ -7,8 +13,29 @@ body {
   margin: auto;
 }
 
+hr {
+  background: #000;
+  border: none;
+  height: 2px;
+}
+
+.toggler {
+  background: blue;
+}
+
 .hidden {
   display: none;
   background: red;
-  margin-bottom: 20px;
+}
+
+.hidden,
+.hidden p {
+  margin: 0;
+  padding: 0;
+}
+
+.jerky-demo,
+.jerky-demo p {
+  margin: 13px 0 7px;
+  padding: 4px 0 18px;
 }

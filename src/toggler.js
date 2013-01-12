@@ -5,6 +5,8 @@
     // default options
     var defaults = {
       type:  'simple',
+      speed: 400,
+      noJerky: false,
       debug: true
     }
 
@@ -34,6 +36,8 @@
         attachSimple();
       } else if ( plugin.settings.type === 'smooth' ) {
         attachSmooth();
+      } else if ( plugin.settings.type === 'fade' ) {
+        attachFade();
       } else {
         log( 'Unknown toggle type has been set; reverting back to "simple".' );
         attachSimple();
@@ -45,17 +49,31 @@
       plugin.dimensions.element.push( plugin.element.width(), plugin.element.height() );
       plugin.dimensions.elementParent.push( plugin.element.outerWidth(true), plugin.element.outerHeight(true) );
 
-      // Set dimensions on element parent
-      // and get elements visibility
+      // Get elements visibility and
+      // set it on elementParent
       plugin.elementParent.css({
-        height: plugin.dimensions.elementParent[1],
-        overflow: 'hidden',
         display: plugin.element.css('display')
       });
 
       // elementParent now has original
       // visibility so let's just show element
       plugin.element.show();
+
+      // We need additional preparation
+      // if toggle type is 'smooth'
+      if ( plugin.settings.type === 'smooth' ) {
+        plugin.elementParent.css({
+          height: plugin.dimensions.elementParent[1]
+        });
+
+        // And even more preparation if
+        // 'noJerky' setting is true
+        if ( plugin.settings.noJerky ) {
+          plugin.elementParent.css({
+            overflow: 'hidden'
+          });
+        }
+      }
 
       log( 'Everything is ready.', plugin.settings );
     };
@@ -100,6 +118,18 @@
                 });
               }
             }
+          }
+        });
+      });
+    };
+
+    var attachFade = function() {
+      plugin.triggers.each(function() {
+        $(this).on({
+          click: function(e) {
+            e.preventDefault();
+
+            plugin.elementParent.fadeToggle( plugin.settings.speed );
           }
         });
       });
