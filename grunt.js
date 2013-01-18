@@ -26,8 +26,8 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
+      files: 'toggler.js',
+      tasks: 'concat min'
     },
     uglify: {}
   });
